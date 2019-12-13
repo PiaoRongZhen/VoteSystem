@@ -1,4 +1,4 @@
-# demo
+# HeyBox-FrontEnd
 
 ## Project setup
 ```
