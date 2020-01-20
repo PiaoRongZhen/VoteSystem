@@ -1,90 +1,36 @@
 import Vue from 'vue'
-// Set this to false to prevent the production tip on Vue startup.
-Vue.config.productionTip = false
-
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
-const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      component: () => import('./components/Index.vue')
-    },
-    {
-      path: '/login',
-      component: () => import('./components/login/Login.vue')
-    },
-    {
-      path: '/dashboard',
-      component: () => import('./components/dashboard/Dashboard.vue'),
-      children: [
-        {
-          path: '',
-          component: () => import('./components/dashboard/Module0/Module0.vue')
-        },
-        {
-          path: '1',
-          component: () => import('./components/dashboard/Module1/Module1.vue')
-        },
-        {
-          path: '2/1',
-          component: () => import('./components/dashboard/Module2/SubModule1/SubModule1.vue')
-        },
-        {
-          path: '2/2',
-          component: () => import('./components/dashboard/Module2/SubModule2/SubModule2.vue')
-        },
-        {
-          path: '2/3',
-          component: () => import('./components/dashboard/Module2/SubModule3/SubModule3.vue')
-        },
-        {
-          path: '2/4',
-          component: () => import('./components/dashboard/Module2/SubModule4/SubModule4.vue')
-        },
-        {
-          path: '3',
-          component: () => import('./components/dashboard/Module3/Module3.vue')
-        },
-        {
-          path: '4',
-          component: () => import('./components/dashboard/Module4/Module4.vue')
-        },
-        {
-          path: '5',
-          component: () => import('./components/dashboard/Module5/Module5.vue')
-        },
-        {
-          path: '6',
-          component: () => import('./components/dashboard/Module6/Module6.vue')
-        },
-        {
-          path: '7',
-          component: () => import('./components/dashboard/Module7/Module7.vue')
-        },
-        {
-          path: '8',
-          component: () => import('./components/dashboard/Module8/Module8.vue')
-        },
-        {
-          path: '9',
-          component: () => import('./components/dashboard/Module9/Module9.vue')
-        },
-      ]
-    },
-    {
-      path: '*',
-      component: () => import('./components/Page404/Page404.vue')
-    }
-  ]
-})
-
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
+import App from './App'
+import router from './router'
+import store from './store/'
+// 'development',use package;'production':use cdn;
+import ElementUI from 'element-ui'
 Vue.use(ElementUI);
+import('element-ui/lib/theme-chalk/index.css')
 
-import App from './App.vue'
+import './components/iconSvg' // iconSvg
+
+import '@/permission' // permission control
+
+import '@/mockjs'; // mock数据
+
+// i18n国际化
+import i18n from "@/lang";
+
+
+Vue.config.productionTip = false;
+
+import formCreate from '@form-create/element-ui';
+Vue.use(formCreate);
+
+import Axios from "axios";
+Vue.prototype.$axios=Axios
+
 new Vue({
-  router: router,
+  components:{
+
+  },
+  router,
+  store,
+  i18n,  // 便于可以直接在组件中通过this.$i18n使用，也可以按需引用
   render: h => h(App),
 }).$mount('#app')

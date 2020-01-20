@@ -1,0 +1,6 @@
+projectKey=vue-toupiao
+serverUrl=http://localhost:9000
+serverVersion=7.8.0.26217
+dashboardUrl=http://localhost:9000/dashboard?id=vue-toupiao
+ceTaskId=AW-3GUwDp5m08zcLeZ6R
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AW-3GUwDp5m08zcLeZ6R

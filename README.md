@@ -1,4 +1,4 @@
-# HeyBox-FrontEnd
+# VoteSyestem
 
 ## Project setup
 ```
