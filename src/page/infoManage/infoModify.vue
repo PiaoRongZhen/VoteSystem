@@ -1,85 +1,88 @@
 <template>
-    <div class="fillcontain" ref="fillcontain">
-        <div class="info_container" ref="info_container">
-            <el-row class="info_row row" :gutter="10">
-            <el-col :span="8">
-            <div class="area">
-                <p class="title">修改信息</p>
-                <el-form class="form"  :model="infoForm" :rules="infoRules" ref="infoForm" label-width="80px">
-                    <el-form-item label="姓名">
-                        <el-input v-model="infoForm.username"  size="mini" disabled placeholder="请输入姓名"></el-input>
-                    </el-form-item>
-                    <el-form-item label="昵称" prop="nickname">
-                        <el-input v-model="infoForm.nickname" size="mini" placeholder="请输入昵称"></el-input>
-                    </el-form-item>
-                    <el-form-item label="绑定邮箱" prop="email">
-                        <el-input v-model="infoForm.email" size="mini" placeholder="请输入绑定邮箱"></el-input>
-                    </el-form-item>
-                    <el-form-item label="绑定手机" prop="telphone">
-                        <el-input v-model="infoForm.telphone" size="mini" placeholder="请输入绑定手机"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="submitForm('infoForm')">提交</el-button>
-                        <el-button @click="resetForm('infoForm')">重置</el-button>
-                    </el-form-item>
-                </el-form>
+  <div class="fillcontain" ref="fillcontain">
+    <div class="info_container" ref="info_container">
+      <el-row class="info_row row" :gutter="10">
+        <el-col :span="8">
+          <div class="area">
+            <p class="title">修改信息</p>
+            <el-form class="form" :model="infoForm" :rules="infoRules" ref="infoForm" label-width="80px">
+              <el-form-item label="姓名">
+                <el-input v-model="infoForm.username" size="mini" disabled placeholder="请输入姓名"></el-input>
+              </el-form-item>
+              <el-form-item label="昵称" prop="nickname">
+                <el-input v-model="infoForm.nickname" size="mini" placeholder="请输入昵称"></el-input>
+              </el-form-item>
+              <el-form-item label="绑定邮箱" prop="email">
+                <el-input v-model="infoForm.email" size="mini" placeholder="请输入绑定邮箱"></el-input>
+              </el-form-item>
+              <el-form-item label="绑定手机" prop="telphone">
+                <el-input v-model="infoForm.telphone" size="mini" placeholder="请输入绑定手机"></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" @click="submitForm('infoForm')">提交</el-button>
+                <el-button @click="resetForm('infoForm')">重置</el-button>
+              </el-form-item>
+            </el-form>
+          </div>
+        </el-col>
+
+        <el-col :span="8">
+          <div class="area">
+            <div class="pwdarea">
+              <p class="title">修改密码</p>
+              <el-form class="form" :model="pwdForm" :rules="pwdRules" ref="pwdForm" label-width="100px">
+                <el-form-item label="原密码" prop="password">
+                  <el-input type="password" v-model="pwdForm.password" auto-complete="off" size="mini"
+                            placeholder="请输入原密码"></el-input>
+                </el-form-item>
+                <el-form-item label="新密码" prop="newpassword">
+                  <el-input type="password" v-model="pwdForm.newpassword" auto-complete="off" size="mini"
+                            placeholder="请输入新密码"></el-input>
+                </el-form-item>
+                <el-form-item label="确认新密码" prop="surepassword">
+                  <el-input type="password" v-model="pwdForm.surepassword" auto-complete="off" size="mini"
+                            placeholder="请输入确认新密码"></el-input>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="submitForm('pwdForm')">提交</el-button>
+                  <el-button @click="resetForm('pwdForm')">重置</el-button>
+                </el-form-item>
+              </el-form>
             </div>
-            </el-col>
+          </div>
+        </el-col>
 
-            <el-col :span="8">
-                <div class="area">
-                    <div class="pwdarea">
-                        <p class="title">修改密码</p>
-                            <el-form class="form"  :model="pwdForm" :rules="pwdRules" ref="pwdForm" label-width="100px">
-                            <el-form-item label="原密码" prop="password">
-                                <el-input type="password" v-model="pwdForm.password" auto-complete="off" size="mini" placeholder="请输入原密码"></el-input>
-                            </el-form-item>
-                            <el-form-item label="新密码" prop="newpassword">
-                                <el-input type="password" v-model="pwdForm.newpassword" auto-complete="off" size="mini" placeholder="请输入新密码"></el-input>
-                            </el-form-item>
-                            <el-form-item label="确认新密码" prop="surepassword">
-                                <el-input type="password" v-model="pwdForm.surepassword" auto-complete="off" size="mini" placeholder="请输入确认新密码"></el-input>
-                            </el-form-item>
-                            <el-form-item>
-                                <el-button type="primary" @click="submitForm('pwdForm')">提交</el-button>
-                                <el-button @click="resetForm('pwdForm')">重置</el-button>
-                            </el-form-item>
-                            </el-form>
-                    </div>
-                </div>
-            </el-col>
+        <el-col :span="8">
+          <div class="area">
+            <div class="phonearea">
+              <p class="title">手机服务</p>
+              <el-form class="form" :model="phoneForm" :rules="phoneRules" ref="phoneForm" label-width="110px">
+                <el-form-item label="当前绑定手机" prop="phone">
+                  <el-input v-model="phoneForm.phone" size="mini" placeholder=""></el-input>
+                </el-form-item>
+                <el-form-item label="基础短信服务" prop="baseType">
+                  <el-checkbox-group v-model="phoneForm.baseType" class="phoneGroup">
+                    <el-checkbox label="网站密码找回" name="baseType"></el-checkbox>
+                  </el-checkbox-group>
+                </el-form-item>
+                <el-form-item label="可选短信服务" prop="changeType">
+                  <el-checkbox-group v-model="phoneForm.changeType" class="phoneGroup">
+                    <el-checkbox label="收到投票通知" name="changeType"></el-checkbox>
+                    <el-checkbox label="查看投票通知" name="changeType"></el-checkbox>
+                  </el-checkbox-group>
+                </el-form-item>
 
-            <el-col :span="8">
-                <div class="area">
-                    <div class="phonearea">
-                            <p class="title">手机服务</p>
-                            <el-form class="form"  :model="phoneForm" :rules="phoneRules" ref="phoneForm" label-width="110px">
-                                <el-form-item label="当前绑定手机" prop="phone">
-                                    <el-input v-model="phoneForm.phone" size="mini" placeholder=""></el-input>
-                                </el-form-item>
-                                <el-form-item label="基础短信服务" prop="baseType">
-                                    <el-checkbox-group v-model="phoneForm.baseType" class="phoneGroup">
-                                        <el-checkbox label="网站密码找回"   name="baseType"></el-checkbox>
-                                    </el-checkbox-group>
-                                </el-form-item>
-                                <el-form-item label="可选短信服务" prop="changeType">
-                                    <el-checkbox-group v-model="phoneForm.changeType" class="phoneGroup">
-                                        <el-checkbox label="收到投票通知" name="changeType"></el-checkbox>
-                                        <el-checkbox label="查看投票通知" name="changeType"></el-checkbox>
-                                    </el-checkbox-group>
-                                </el-form-item>
-
-                            <el-form-item>
-                                <el-button type="primary" @click="submitForm('phoneForm')">提交</el-button>
-                                <el-button @click="resetForm('phoneForm')">重置</el-button>
-                            </el-form-item>
-                        </el-form>
-                    </div>
-                </div>
-            </el-col>
-            </el-row>
-        </div>
+                <el-form-item>
+                  <el-button type="primary" @click="submitForm('phoneForm')">提交</el-button>
+                  <el-button @click="resetForm('phoneForm')">重置</el-button>
+                </el-form-item>
+              </el-form>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
     </div>
+  </div>
 </template>
 
 <script>
