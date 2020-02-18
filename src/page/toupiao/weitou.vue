@@ -169,9 +169,9 @@
         methods:{
             handleClick(id,type){
                 if(type===0){
-                    this.$router.push({path: '/toupiao/TouPiao2', query: {id:id}})
+                    this.$router.push({path: '/h_toupiao/TouPiao2', query: {id:id}})
                 }else{
-                    this.$router.push({path: '/toupiao/TouPiao', query: {id:id,type:type}})
+                    this.$router.push({path: '/h_toupiao/TouPiao', query: {id:id,type:type}})
                 }
 
             },
