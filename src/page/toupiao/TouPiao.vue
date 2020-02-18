@@ -16,91 +16,128 @@
                 </span>
                 </div>
             </el-card>
-            <el-card class="box-card" style="width: 960px;margin: 5px auto;"><img style="width: 900px;height: 150px;padding-top: 10px;" :src="muban_Img[type-1]" /></el-card>
+            <el-card class="box-card set_padding" style="width: 960px;margin: 0px auto;">
+                <div v-html="tableData[type-1]"></div>
+            </el-card>
 
-            <el-card v-if="type===1" class="box-card" v-for="(o,i) in namelist" style="width: 960px;min-height: 60px;margin: 2px auto;">
-                <div  style="float:left; width:300px;">{{o.name}}</div>
-                <div style="float:left; width:500px;">
-                    <el-input-number size="medium" :min="0" :max="20" v-model="num1[i]"></el-input-number>
+            <el-card v-if="type===1" class="box-card set_padding" v-for="(o,i) in namelist" style="width: 960px;min-height: 50px;margin: 0px auto;">
+                <div class="card_style2">
+                    <div  style="float:left;width:277px;padding-top: 10px;">{{o.name}}</div>
+                    <div class="line"></div>
+                    <div style="float:left; width:550px; padding-top: 5px;">
+                        <el-input-number  :min="0" :max="20" v-model="num1[i]"></el-input-number>
+                    </div>
                 </div>
             </el-card>
 
-            <el-card v-if="type===3" class="box-card" v-for="(o,i) in namelist" style="width: 960px;min-height: 60px;margin: 2px auto;">
-                <div  style="float:left; width:500px;padding-left: 15px;">
-                    <div style="float:left; width: 50px;" >{{o.xuhao}}</div>
-                    <div style="float:left; width: 90px;">{{o.bumen}}</div>
-                    <div style="float:left; width: 100px;">{{o.name}}</div>
-                    <div style="float:left; width: 120px;">{{o.now_ji}}</div>
-                    <div style="float:left; width: 120px;">{{o.next_ji}}</div>
-                </div>
-                <div style="float:left; width:280px;">
-                    <el-radio-group v-model="radio1[i-1]" size="small">
-                        <el-radio-button label="优秀"></el-radio-button>
-                        <el-radio-button label="良好"></el-radio-button>
-                        <el-radio-button label="一般"></el-radio-button>
-                        <el-radio-button label="差"></el-radio-button>
-                    </el-radio-group>
+            <el-card v-if="type===3" class="box-card set_padding" v-for="(o,i) in namelist" style="width: 960px;min-height: 50px;margin: 0px auto;">
+                <div class="card_style2" style="float: left">
 
-                </div>
-                <div style="float: left;width: 120px;">
-                    <el-radio-group v-model="radio2[i-1]" size="small">
-                        <el-radio-button label="是"></el-radio-button>
-                        <el-radio-button label="否"></el-radio-button>
-                    </el-radio-group>
+                    <div style="width: 47px;padding-left:10px;float:left;padding-top: 10px;">{{o.xuhao}}</div>
+                    <div style="padding-left:7px;width: 1px;height: 50px;border-right: 1px solid black; float:left;"></div>
+                    <div  style="width: 111px;float:left;padding-top:10px;">{{o.bumen}}</div>
+                    <div style="padding-left:0px;width: 1px;height: 50px;border-right: 1px solid black; float:left;"></div>
+                    <div style="width: 127px;float:left;padding-top:10px;">{{o.name}}</div>
+                    <div style="padding-left:0px;width: 1px;height: 50px;border-right: 1px solid black; float:left;"></div>
+
+                    <div style="width: 147px;float:left;padding-top:10px;">{{o.now_ji}}</div>
+                    <div style="padding-left:0px;width: 1px;height: 50px;border-right: 1px solid black; float:left;"></div>
+
+                    <div style="width: 144px;float:left;padding-top:10px;">{{o.next_ji}}</div>
+                    <div style="padding-left:0px;width: 1px;height: 50px;border-right: 1px solid black; float:left;"></div>
+
+
+                    <div style="float:left; width:210px;padding-top: 10px;">
+                        <el-radio-group v-model="radio1[i-1]" size="small">
+                            <el-radio-button label="优秀"></el-radio-button>
+                            <el-radio-button label="良好"></el-radio-button>
+                            <el-radio-button label="一般"></el-radio-button>
+                            <el-radio-button label="差"></el-radio-button>
+                        </el-radio-group>
+
+                    </div>
+                    <div style="padding-left:0px;width: 1px;height: 50px;border-right: 1px solid black; float:left;"></div>
+                    <div style="float: left;width: 103px;padding-top: 10px;">
+                        <el-radio-group v-model="radio2[i-1]" size="small">
+                            <el-radio-button label="是"></el-radio-button>
+                            <el-radio-button label="否"></el-radio-button>
+                        </el-radio-group>
+                    </div>
                 </div>
             </el-card>
 
-            <el-card v-if="type===4||type===2" class="box-card" v-for="(o,i) in namelist" style="width: 960px;min-height: 60px;margin: 2px auto;">
-                <div  style="float:left; width:70px;">
-                    {{o.name}}
-                </div>
-                <div style="float:left;">
-                    <el-radio-group v-model="de[i-1]"  size="mini">
-                        <el-radio-button label="好"></el-radio-button>
-                        <el-radio-button label="较好"></el-radio-button>
-                        <el-radio-button label="一般"></el-radio-button>
-                        <el-radio-button label="较差"></el-radio-button>
-                    </el-radio-group>|
-                </div>
-                <div style="float:left;">
-                    <el-radio-group v-model="neng[i-1]"  size="mini">
-                        <el-radio-button label="好"></el-radio-button>
-                        <el-radio-button label="较好"></el-radio-button>
-                        <el-radio-button label="一般"></el-radio-button>
-                        <el-radio-button label="较差"></el-radio-button>
-                    </el-radio-group>|
-                </div>
-                <div style="float:left;">
-                    <el-radio-group v-model="qin[i-1]"  size="mini">
-                        <el-radio-button label="好"></el-radio-button>
-                        <el-radio-button label="较好"></el-radio-button>
-                        <el-radio-button label="一般"></el-radio-button>
-                        <el-radio-button label="较差"></el-radio-button>
-                    </el-radio-group>|
-                </div>
-                <div style="float:left;">
-                    <el-radio-group v-model="ji[i-1]"  size="mini">
-                        <el-radio-button label="好"></el-radio-button>
-                        <el-radio-button label="较好"></el-radio-button>
-                        <el-radio-button label="一般"></el-radio-button>
-                        <el-radio-button label="较差"></el-radio-button>
-                    </el-radio-group>|
-                </div>
-                <div style="float:left;">
-                    <el-radio-group v-model="lian[i-1]"  size="mini">
-                        <el-radio-button label="好"></el-radio-button>
-                        <el-radio-button label="较好"></el-radio-button>
-                        <el-radio-button label="一般"></el-radio-button>
-                        <el-radio-button label="较差"></el-radio-button>
-                    </el-radio-group>|
-                </div>
-                <div style="float:left;">
-                    <el-radio-group v-model="zong[i-1]"  size="mini">
-                        <el-radio-button label="优秀"></el-radio-button>
-                        <el-radio-button label="称职"></el-radio-button>
-                        <el-radio-button label="基本称职"></el-radio-button>
-                        <el-radio-button label="不称职"></el-radio-button>
-                    </el-radio-group>
+
+            <el-card v-if="type===4||type===2" class="box-card set_padding" v-for="(o,i) in namelist" style="width: 960px;min-height: 50px;margin: 0px auto;">
+                <div class="card_style2">
+                    <div  style="float:left; width:58px;padding-top: 10px;">
+                        {{o.name}}
+                    </div>
+                    <div class="line"></div>
+                    <div style="float:left;padding-top: 5px;">
+                        <el-select v-model="de[i-1]" placeholder="请选择" style="width: 127px;">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="line"></div>
+                    <div style="float:left;padding-top: 5px;">
+                        <el-select v-model="neng[i-1]" placeholder="请选择" style="width: 134px;">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="line"></div>
+                    <div style="float:left;padding-top: 5px;">
+                        <el-select v-model="qin[i-1]" placeholder="请选择" style="width: 134px;">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="line"></div>
+                    <div style="float:left;padding-top: 5px;">
+                        <el-select v-model="ji[i-1]" placeholder="请选择" style="width: 142px;">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="line"></div>
+                    <div style="float:left;padding-top: 5px;">
+                        <el-select v-model="lian[i-1]" placeholder="请选择" style="width: 147px;">
+                            <el-option
+                                    v-for="item in options"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                    <div class="line"></div>
+                    <div style="float:left;padding-top: 5px;">
+                        <el-select v-model="zong[i-1]" placeholder="请选择" style="width: 160px;">
+                            <el-option
+                                    v-for="item in options2"
+                                    :key="item.value"
+                                    :label="item.label"
+                                    :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
                 </div>
             </el-card>
             <el-card v-if="type===5||type===6" class="box-card" v-for="(o,i) in namelist" style="width: 960px;min-height: 60px;margin: 2px auto;">
@@ -121,12 +158,7 @@
 </template>
 
 <script>
-    import muban1_Img from "@/assets/img/muban_1.png"
-    import muban2_Img from "@/assets/img/muban_2.png"
-    import muban3_Img from "@/assets/img/muban_3.png"
-    import muban4_Img from "@/assets/img/muban_4.png"
-    import muban5_Img from "@/assets/img/muban_5.png"
-    import muban6_Img from "@/assets/img/muban_6.png"
+    import tableData from "@/assets/data/table.json";
     export default {
         name: "TouPiao",
         data(){
@@ -135,7 +167,7 @@
                 type:null,//测评票类别
                 title:["民主测评评分表","选调生基层锻炼期满考核测评票（勾选）","拟晋升职级人选部门民主测评票（勾选）","中层领导干部考核民主测评表",
                     "派遣人员考核民主测评票","法官助理、书记员工作完成情况综合评价表",""],
-                muban_Img:[muban1_Img,muban2_Img,muban3_Img,muban4_Img,muban5_Img,muban6_Img,''],
+                tableData:[tableData.table1,tableData.table2,tableData.table3,],
                 note:'',//备注说明
                 department:'',
                 date:'',
@@ -150,6 +182,33 @@
                 ji:[],
                 lian:[],
                 zong:[],
+
+                options: [{
+                    value: '1',
+                    label: '好'
+                }, {
+                    value: '2',
+                    label: '较好'
+                }, {
+                    value: '3',
+                    label: '一般'
+                }, {
+                    value: '4',
+                    label: '较差'
+                }],
+                options2: [{
+                    value: '1',
+                    label: '优秀'
+                }, {
+                    value: '2',
+                    label: '称职'
+                }, {
+                    value: '3',
+                    label: '基本称职'
+                }, {
+                    value: '4',
+                    label: '不称职'
+                }]
 
             }
         },
@@ -180,9 +239,6 @@
 
         },
         methods:{
-            toback(){
-                this.$router.push({path:'/mubanManage/mubanShow/mubanShow'+this.type,query:{}})
-            },
             publish(){
 
             }
@@ -191,7 +247,7 @@
     }
 </script>
 
-<style>
+<style lang="less">
     .info_container{
         padding: 20px;
         background: #fff;
@@ -205,5 +261,63 @@
         padding: 8px 5px;
         font-size: 10px;
         border-radius: 0;
+    }
+
+    .set_padding .el-card__body{
+        padding: 0px 20px;
+
+    }
+    .set_padding{
+    table{
+        border-collapse:collapse;
+    }
+    table,tr,td{
+        border:1px solid black;
+    }
+    td{
+        width:100px;/*这里需要自己调整，根据自己的需求调整宽度*/
+        height:70px;/*这里需要自己调整，根据自己的需求调整高度*/
+        position: relative;
+    }
+    td[class=first]:before{
+        content: "";
+        position: absolute;
+        width: 1px;
+        height:310px;/*这里需要自己调整，根据td的宽度和高度*/
+        top:0;
+        left:0;
+        background-color: black;
+        display: block;
+        transform: rotate(-63deg);/*这里需要自己调整，根据线的位置*/
+        transform-origin: top;
+    }
+    }
+    .card_style{
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        width: 918px;
+        min-height: 60px;
+    }
+    .card_style2{
+        border-bottom: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        min-height: 50px;
+
+    }
+    .el-card {
+        border: 1px solid #EBEEF5;
+        background-color: #FFF;
+        color: #303133;
+        -webkit-transition: .3s;
+        transition: .3s;
+    }
+    .line{
+        padding-left:0px;
+        width: 1px;
+        height: 50px;
+        border-right: 1px solid black;
+        float:left;
     }
 </style>
